@@ -1,3 +1,8 @@
+# Frontend Figma designs
+
+https://www.figma.com/file/gGQTqpOXdNDo8Yft4qvKFl/Frontend?node-id=8%3A223
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
