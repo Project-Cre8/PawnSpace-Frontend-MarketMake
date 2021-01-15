@@ -2,6 +2,12 @@
 
 https://www.figma.com/file/gGQTqpOXdNDo8Yft4qvKFl/Frontend?node-id=8%3A223
 
+# Design Docs
+
+https://docs.google.com/document/d/17qoYzcMBqpa8NHyQxZR8EBwIy1fDegdXwVs8G5qccZQ/edit
+
+https://github.com/Project-Cre8
+
 
 # Getting Started with Create React App
 
