@@ -4,6 +4,8 @@ import 'antd/dist/antd.css';
 import './baseScreen.css'
 import Sider from './sider.js';
 
+// Layout: https://ant.design/components/layout/ header sider 2
+
 const { Header, Content } = Layout;
 
 function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3 }) {
