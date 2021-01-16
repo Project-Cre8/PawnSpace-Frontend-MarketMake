@@ -7,7 +7,7 @@ const { SubMenu } = Menu;
 
 function Sider() {
   return (
-    <Layout width={200} className="site-layout-background">
+    <Layout width={200} className="sider">
       <Menu
         width={200} className="site-layout-background"
         mode="inline"
