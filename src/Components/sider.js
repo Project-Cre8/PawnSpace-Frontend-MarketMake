@@ -7,9 +7,8 @@ const { SubMenu } = Menu;
 
 function Sider() {
   return (
-    <Layout width={200} className="sider">
+    <Layout className="sider">
       <Menu
-        width={200} className="site-layout-background"
         mode="inline"
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}

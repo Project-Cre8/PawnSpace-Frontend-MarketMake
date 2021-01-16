@@ -20,7 +20,7 @@ function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3 }) {
         </Header>
         <Layout>
 
-          <Sider className="site-layout-background" />
+          <Sider />
 
           <Layout style={{ padding: '0 24px 24px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
