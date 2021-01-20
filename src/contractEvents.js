@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import BaseScreen from './Components/baseScreen';
+import BaseScreen from './Components/baseScreen/baseScreen';
 
 
 /*
