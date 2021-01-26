@@ -15,6 +15,11 @@
   background: #fff;
 }
 
-.sider {
-  width: 200px 
+/* .header Menu{
+  content: flex
+} */
+
+.header {
+  content: flex;
+  justify-content: flex-end;
 }

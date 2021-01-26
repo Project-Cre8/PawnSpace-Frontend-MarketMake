@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ContractObjects from './contractObjects.js';
+import 'antd/dist/antd.css';
 import './App.css';
 
 /*
@@ -7,7 +8,7 @@ Layer 1 (App.js): This component is going to check whether the browser has Metam
 */
 
 /*
-Function - enableMetamask(): this function calls ethereum.enable which prompts the user to unlock their Metamask and reveal their public address to the app.The address will be saved to state(called “maskAddress”) at this step.This function will be passed down via prop to be called from a button in the visual elements(along with the “maskAddress” state variable).
+Function - enableMetamask(): this function calls ethereum.enable which prompts the user to unlock their Metamask and reveal their public address to the app.The address will be saved to state(called “maskAddress”) at this step. This function will be passed down via prop to be called from a button in the visual elements(along with the “maskAddress” state variable).
 
 This component will also initialize Ethereum standard events(to listen for network change, address change, etc.) if Metamask is detected.Network ID and maskAddress state variable will be updated if this is called(and cause Layers 2 - 4 to reset).This part could potentially be moved into its own layer(between layer 1 and 2)  if there are any future disruptions as a result.
 */
