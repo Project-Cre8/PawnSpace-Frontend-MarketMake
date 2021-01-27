@@ -14,7 +14,7 @@ import MyLayout from './MyLayout.js';
   import { UnorderedListOutlined } from '@ant-design/icons';
 */
 
-function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3 }) {
+function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, factory, orders }) {
   return (
     <div>
       <MyLayout hasMeta={hasMeta}
@@ -35,7 +35,7 @@ function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3 }) {
         <Route exact path="/offers">
           <Offers />
         </Route>
-        
+
         {/* account page */}
         <Route exact path="/account">
           <Account />
