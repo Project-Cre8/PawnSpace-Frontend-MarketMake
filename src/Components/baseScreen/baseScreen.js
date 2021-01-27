@@ -15,7 +15,7 @@ const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 
-function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3 }) {
+function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, factory, orders }) {
   return (
     <div>
       <Layout>
