@@ -6,7 +6,11 @@ import icon_star from '../../icons/icon-star.svg';
 import icon_loan_currency from '../../icons/icon-loan-currency.svg';
 import land from '../../icons/land.png';
 
-export default () => {
+/*
+Offer: { name, image, duration, amount, currency, reward, rewardCurrency, rate}
+*/
+
+export default ({ name, image, duration, amount, currency, reward, rewardCurrency, rate, isFavorited=false, url }) => {
   return (
     <div className='item'>
       <div className='upper'>
