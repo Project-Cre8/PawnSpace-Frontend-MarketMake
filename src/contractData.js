@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ContractEvents from './contractEvents';
+import ContractEvents from './ContractEvents';
 
 /*
 Layer 3 (contractData.js): This component is going to house the main logic for calling general (global variables) and user-specific smart contract data. General data will be called from a useEffect hook if Metamask exists in the browser (on every render). Depending on how much general data we will be calling, we may structure this into an object variable and set it to state (then send it down as prop).
