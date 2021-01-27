@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ContractObjects from './ContractObjects.js';
+import ContractObjects from './contractObjects.js';
 import 'antd/dist/antd.css';
 import './App.css';
 

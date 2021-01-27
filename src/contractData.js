@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ContractEvents from './ContractEvents.js';
+import ContractEvents from './contractEvents.js';
 
 const axios = require('axios');
 
