@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import BaseScreen from './Components/baseScreen/baseScreen';
+import BaseScreen from './baseScreen/BaseScreen.js';
 
 const aUSDCABI = require('./ABI/aUSDC.js');
 const erc20ABI = require("./ABI/erc20.js");

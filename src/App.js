@@ -46,7 +46,7 @@ function App() {
   }, [maskAddress]);
 
   // Ethereum standard event listeners (console.logs for testing purposes for now)
-  useEffect(() => {  
+  useEffect(() => {
 
     const handleAccountChange = (accounts) => {
       if (typeof accounts[0] !== "undefined") {
@@ -81,13 +81,13 @@ function App() {
 
     // Subscribe to accounts change
     window.ethereum.on("accountsChanged", handleAccountChange);
-    
+
     // Subscribe to chainId change
     window.ethereum.on("chainChanged", handleChainChange);
-    
+
     // Subscribe to provider connection
     window.ethereum.on("connect", handleConnect);
-    
+
     // Subscribe to provider disconnection
     window.ethereum.on("disconnect", handleDisconnect);
 
@@ -109,11 +109,11 @@ function App() {
 
   if (loaded) {
     return (
-      <ContractObjects 
+      <ContractObjects
         hasMeta={hasMeta}
         maskAddress={maskAddress}
-        network={network} 
-        unlocked={unlocked} 
+        network={network}
+        unlocked={unlocked}
         enable={enableMetamask}
       />
     );
