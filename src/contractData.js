@@ -75,6 +75,10 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
           let orderSpaceAddr = response.data.data.orders[k].space.id;
           for (let j = 0; j < spaces.length; j++) {
             if (spaces[j].spaceAddr.toUpperCase() === orderSpaceAddr.toUpperCase()) {
+              let orderToPush = response.data.data.orders[k];
+              orderToPush.additionalCollateral /= (10 **6);
+              orderToPush.interest /= (10 ** 6);
+              orderToPush.requestAmount /= (10 ** 6);
               spaces[j].orders.push(response.data.data.orders[k]);
               break;
             }
