@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ContractData from './contractData.js';
+import ContractData from './ContractData.js';
 
 const Web3 = require("web3");
 
