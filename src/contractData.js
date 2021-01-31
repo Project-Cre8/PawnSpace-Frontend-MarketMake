@@ -28,6 +28,8 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
           spaces(first: 5) {
             id
             nftAddress
+            nftName
+            nftSymbol
             orders {
               id
             }
@@ -53,6 +55,7 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
         }`
       }
       ).then((response) => {
+        console.log(response);
         const factoryInfo = {
           factoryAddr: response.data.data.factories[0].id,
           totalSpaces: response.data.data.factories[0].spaceCount
@@ -65,6 +68,9 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
           let spaceTemplate = {
             name: "",
             spaceAddr: response.data.data.spaces[i].id,
+            nftAddr: response.data.data.spaces[i].nftAddress,
+            nftName: response.data.data.spaces[i].nftName,
+            nftSymbol: response.data.data.spaces[i].nftSymbol,
             orders: []
           }
           spaces.push(spaceTemplate)
@@ -75,6 +81,10 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
           let orderSpaceAddr = response.data.data.orders[k].space.id;
           for (let j = 0; j < spaces.length; j++) {
             if (spaces[j].spaceAddr.toUpperCase() === orderSpaceAddr.toUpperCase()) {
+              let orderToPush = response.data.data.orders[k];
+              orderToPush.additionalCollateral /= (10 **6);
+              orderToPush.interest /= (10 ** 6);
+              orderToPush.requestAmount /= (10 ** 6);
               spaces[j].orders.push(response.data.data.orders[k]);
               break;
             }

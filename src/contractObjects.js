@@ -17,7 +17,7 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
 
   useEffect(() => {
     if (hasMeta && network === "42" && unlocked) {
-      // web3 instance
+      console.log(hasMeta, network, unlocked);
       const web3 = new Web3(window.web3.currentProvider);
 
       // create contract objects once we have contracts made
@@ -29,7 +29,20 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
     } else {
       setLoaded(true);
     }
-  }, []);
+  }, [hasMeta, network, unlocked]);
+
+  const getUserNFT = async (NFTAddr) => {
+    const NFT = new web3Obj.eth.Contract(NFTABI.abi, NFTAddr);
+    let userBal = NFT.methods.balanceOf(maskAddress);
+    let getUserBal = await userBal.call();
+    
+    if (getUserBal > 0) {
+      for (let i = 0; i < getUserBal; i++) {
+        let tokenByIndex = NFT.methods.tokenOfOwnerByIndex(maskAddress, i);
+        let getTokenID = await tokenByIndex.call();
+      }
+    }
+  }
 
   const getNFTName = async (NFTAddr) => {
     const NFT = new web3Obj.eth.Contract(NFTABI.abi, NFTAddr);

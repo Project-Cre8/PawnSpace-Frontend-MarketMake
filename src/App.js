@@ -23,9 +23,19 @@ function App() {
   // check if metamask exists. is called whenever maskAddress changes
   useEffect(() => {
     setLoaded(false);
-
+    const getAddr = async () => {
+      const addr = await window.ethereum.request({method: 'eth_accounts'});
+      if (typeof addr[0] === "string" && addr[0].length > 0) {
+        setMaskAddress(addr[0]);
+        setUnlocked(true);
+      } else {
+        setUnlocked(false);
+        setMaskAddress("")
+      }
+    }
     if (window.ethereum) {
-      console.log(window.ethereum.networkVersion);
+      getAddr()
+      
       setNetwork(window.ethereum.networkVersion);
       setLoaded(true);
       setHasMeta(true);
@@ -39,11 +49,23 @@ function App() {
   useEffect(() => {
 
     const handleAccountChange = (accounts) => {
-      console.log(accounts[0]);
-      setMaskAddress(accounts[0]);
+      if (typeof accounts[0] !== "undefined") {
+        console.log(accounts[0]);
+        setMaskAddress(accounts[0]);
+        setUnlocked(true);
+      } else {
+        setMaskAddress("");
+        setUnlocked(false);
+      }
+      
     }
 
     const handleChainChange = (chainId) => {
+      if (chainId.toString() !== "42") {
+        setUnlocked(false);
+      } else {
+        setUnlocked(true);
+      }
       console.log(chainId.toString());
       setNetwork(window.ethereum.networkVersion);
     }
@@ -54,6 +76,7 @@ function App() {
 
     const handleDisconnect = (error) => {
       console.log(error);
+      setUnlocked(false);
     }
 
     // Subscribe to accounts change
