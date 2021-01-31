@@ -1,0 +1,26 @@
+
+.offers {
+  height: fit-content;
+  left: calc(50% - 690px/2 - 10px);
+  top: 127px;
+}
+
+.offers ul { 
+  display: flex;
+  flex-flow: row wrap;  
+  
+  /* justify-content: space-between; */
+  -ms-align-items: flex-start;
+  align-items: flex-start;  
+  
+  padding: 5px;
+  position: relative;
+  /* width: 95%; */
+}
+.offers ul li { 
+  overflow: hidden;
+
+}
+.offers ul li:not(:last-child) { 
+  margin-right: 20px;
+}

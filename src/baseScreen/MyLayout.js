@@ -9,7 +9,7 @@ import MyHeader from "./MyHeader.js";
 
 const { Content } = Layout;
 
-function MyLayout({ hasMeta, network, unlocked, maskAddress, enable, web3, children }) {
+function MyLayout({ children }) {
   return (
     <Layout>
       <BrowserRouter>

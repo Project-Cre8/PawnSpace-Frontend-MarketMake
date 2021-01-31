@@ -1,0 +1,112 @@
+[
+  {
+    "name": "hi",
+    "image": "land",
+    "duration": 90,
+    "amount": 90,
+    "currency": "DAI",
+    "reward": 50,
+    "rewardCurrency": "USDC",
+    "rate": 50,
+    "url": "offers/testItem"
+  },
+  {
+    "name": "AXIE",
+    "image": "land",
+    "duration": 45,
+    "amount": 100,
+    "currency": "DAI",
+    "reward": 70,
+    "rewardCurrency": "USDC",
+    "rate": 25,
+    "url": "offers/testItem2"
+  },
+  {
+    "name": "Land plot #46 X 462 Y 155",
+    "image": "land",
+    "duration": 90,
+    "amount": 90,
+    "currency": "DAI",
+    "reward": 50,
+    "rewardCurrency": "USDC",
+    "rate": 50,
+    "url": "offers/testItem"
+  },
+  {
+    "name": "AXIE",
+    "image": "land",
+    "duration": 45,
+    "amount": 100,
+    "currency": "DAI",
+    "reward": 70,
+    "rewardCurrency": "USDC",
+    "rate": 25,
+    "url": "offers/testItem2"
+  },
+  {
+    "name": "Land plot #46 X 462 Y 155",
+    "image": "land",
+    "duration": 90,
+    "amount": 90,
+    "currency": "DAI",
+    "reward": 50,
+    "rewardCurrency": "USDC",
+    "rate": 50,
+    "url": "offers/testItem"
+  },
+  {
+    "name": "AXIE",
+    "image": "land",
+    "duration": 45,
+    "amount": 100,
+    "currency": "DAI",
+    "reward": 70,
+    "rewardCurrency": "USDC",
+    "rate": 25,
+    "url": "offers/testItem2"
+  },
+  {
+    "name": "Land plot #46 X 462 Y 155",
+    "image": "land",
+    "duration": 90,
+    "amount": 90,
+    "currency": "DAI",
+    "reward": 50,
+    "rewardCurrency": "USDC",
+    "rate": 50,
+    "url": "offers/testItem"
+  },
+  {
+    "name": "AXIE",
+    "image": "land",
+    "duration": 45,
+    "amount": 100,
+    "currency": "DAI",
+    "reward": 70,
+    "rewardCurrency": "USDC",
+    "rate": 25,
+    "url": "offers/testItem2"
+  },
+  {
+    "name": "Land plot #46 X 462 Y 155",
+    "image": "land",
+    "duration": 90,
+    "amount": 90,
+    "currency": "DAI",
+    "reward": 50,
+    "rewardCurrency": "USDC",
+    "rate": 50,
+    "url": "offers/testItem"
+  },
+  {
+    "name": "AXIE",
+    "image": "land",
+    "duration": 45,
+    "amount": 100,
+    "currency": "DAI",
+    "reward": 70,
+    "rewardCurrency": "USDC",
+    "rate": 25,
+    "url": "offers/testItem2"
+  }
+]

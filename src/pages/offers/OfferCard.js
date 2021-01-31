@@ -1,16 +1,13 @@
 import React from 'react';
 import './OfferCard.css';
-import icon_info from '../../icons/icon-info.svg';
-import icon_duration from '../../icons/icon-duration.svg';
-import icon_star from '../../icons/icon-star.svg';
-import icon_loan_currency from '../../icons/icon-loan-currency.svg';
-import land from '../../icons/land.png';
 
-/*
-Offer: { name, image, duration, amount, currency, reward, rewardCurrency, rate}
-*/
+import getIcon from './IconHandler.js';
+import { Link } from 'react-router-dom';
 
-export default ({ name, image, duration, amount, currency, reward, rewardCurrency, rate, isFavorited=false, url }) => {
+
+// Offer: { name, image, duration, amount, currency, reward, rewardCurrency, rate, url}
+
+export default ({ name, image, duration, amount, currency, reward, rewardCurrency, rate, url }) => {
   return (
     <div className='item'>
       <div className='upper'>
@@ -19,36 +16,35 @@ export default ({ name, image, duration, amount, currency, reward, rewardCurrenc
           <div className='t1'>
             <p>+</p>
           </div>
-          <img src={icon_loan_currency} alt='Reward currency' />
+          <img src={getIcon(rewardCurrency)} alt='Reward currency' />
           <div className='t2'>
-            <p>50</p>
+            <p>{reward}</p>
           </div>
         </div>
 
         <div className='upper-img'>
-          <img src={land} alt='Offer card image' />
+          <Link to={url}>
+            <img src={getIcon(image)} alt='Offer card image' />
+          </Link>
         </div>
       </div>
 
       <div className='nameplate'>
-        <p>Land plot #46 X462 Y155</p>
+        <p>{name}</p>
       </div>
 
       <div className='lower'>
         <p className='duration-label'>Duration</p>
         <p className='loan-label'>Loan</p>
-        <img className='icon-duration' src={icon_duration} alt='Duration icon' />
-        <p className='duration'>30 days</p>
-        <img className='icon-loan-currency' src={icon_loan_currency} alt='Loan currency icon' />
-        <p className='loan'>90 DAI</p>
-        <p className='rate'>Rate: 50%</p>
-
-        <img className='icon-info' src={icon_info} alt='Info icon' />
-        <img className='icon-star' src={icon_star} alt='Star icon' />
+        <img className='icon-duration' src={getIcon('icon_duration')} alt='Duration icon' />
+        <p className='duration'>{duration} days</p>
+        <img className='icon-loan-currency' src={getIcon(currency)} alt='Loan currency icon' />
+        <p className='loan'>{amount + ' ' + currency}</p>
+        <p className='rate'>Rate: {rate}%</p>
+        <Link to={url}>
+          <img className='icon-info' src={getIcon('icon_info')} alt='Info icon' />
+        </Link>
       </div>
-
-
-      This is an offer card
     </div>
   );
 };
