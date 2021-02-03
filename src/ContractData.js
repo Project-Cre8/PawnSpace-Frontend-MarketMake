@@ -93,7 +93,7 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
 
         setFactoryData(factoryInfo);
         setOrderData(spaces);
-        
+        setLoaded(true);
         console.log(factoryInfo);
         console.log(spaces);
         
@@ -108,22 +108,29 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
     return () => clearInterval(timer);
   }, []);
 
-  return (
-    <ContractEvents 
-      hasMeta={hasMeta}
-      network={network}
-      unlocked={unlocked}
-      maskAddress={maskAddress}
-      enable={enable}
-      web3={web3}
-      factory={factoryData}
-      orders={orderData}
-      sendOrder={sendOrder}
-      sendOffer={sendOffer}
-      sendPayback={sendPayback}
-      sendWithdraw={sendWithdraw}
-    />
-  );
+  if (loaded) {
+    return (
+      <ContractEvents 
+        hasMeta={hasMeta}
+        network={network}
+        unlocked={unlocked}
+        maskAddress={maskAddress}
+        enable={enable}
+        web3={web3}
+        factory={factoryData}
+        orders={orderData}
+        sendOrder={sendOrder}
+        sendOffer={sendOffer}
+        sendPayback={sendPayback}
+        sendWithdraw={sendWithdraw}
+      />
+    );
+  } else {
+    return (
+      <div>loading</div>
+    )
+  }
+  
 }
 
 

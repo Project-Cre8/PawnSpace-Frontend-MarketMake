@@ -16,8 +16,6 @@ function ContractEvents({ hasMeta, network, unlocked, maskAddress, enable, web3,
 
   // will be calling contract event listeners here
   useEffect(() => {
-    console.log(unlocked);
-    console.log(web3);
     const getBalances = async () => {
       const aContract = new web3.eth.Contract(aUSDCABI, aUSDCAddr);
       const usdcContract = new web3.eth.Contract(erc20ABI, USDCAddr);

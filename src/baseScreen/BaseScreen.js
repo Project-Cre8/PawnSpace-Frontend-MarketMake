@@ -29,7 +29,7 @@ function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sen
 
           {/* offers page */}
           <Route exact path="/offers">
-            <OffersPage />
+            <OffersPage orders={orders}/>
           </Route>
 
           {/* account page */}
