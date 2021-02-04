@@ -3,7 +3,6 @@ import './OfferCard.css';
 
 import getIcon from './IconHandler.js';
 import { Link } from 'react-router-dom';
-
 // Offer: { name, image, duration, amount, currency, reward, rewardCurrency, rate, url}
 
 const OfferCard = ({ name, image, duration, amount, currency, reward, rewardCurrency, rate, url }) => {
