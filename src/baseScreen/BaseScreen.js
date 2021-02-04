@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './BaseScreen.css';
@@ -7,7 +7,7 @@ import Account from '../pages/account/Account.js';
 import Index from '../pages/index/Index.js';
 import OffersPage from '../pages/offers/OffersPage.js';
 import MyLayout from './MyLayout.js';
-import NotFound from '../pages/NotFound.js'
+import NotFound from '../pages/NotFound.js';
 
 /* 
   Layout: https://ant.design/components/layout/ header sider 2
@@ -15,11 +15,26 @@ import NotFound from '../pages/NotFound.js'
   import { UnorderedListOutlined } from '@ant-design/icons';
 */
 
-function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, factory, orders, usdcBal, aBal, updateBalances }) {
+function BaseScreen({
+  hasMeta,
+  network,
+  unlocked,
+  maskAddress,
+  enable,
+  web3,
+  sendOrder,
+  sendOffer,
+  sendPayback,
+  sendWithdraw,
+  factory,
+  orders,
+  usdcBal,
+  aBal,
+  updateBalances,
+}) {
   return (
     <div>
       <MyLayout>
-
         Content
         <Switch>
           {/* index */}
@@ -39,9 +54,8 @@ function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sen
 
           <Route component={NotFound} />
         </Switch>
-
       </MyLayout>
-    </div >
+    </div>
   );
 }
 

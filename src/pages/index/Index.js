@@ -1,12 +1,4 @@
-
-
-
-
-
-export default () => {
-  return (
-    <div>
-      In index
-    </div>
-  );
-}
+const Index = () => {
+  return <div>In index</div>;
+};
+export default Index;

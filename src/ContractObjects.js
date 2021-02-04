@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import ContractData from './ContractData.js';
 
-const Web3 = require("web3");
+const Web3 = require('web3');
 
-const pawnSpace = require("./ABI/PawnSpace.json");
-const pawnFactory = require("./ABI/PawnFactory.json");
-const NFTABI = require("./ABI/ERC721.json");
+const pawnSpace = require('./ABI/PawnSpace.json');
+// const pawnFactory = require("./ABI/PawnFactory.json");
+const NFTABI = require('./ABI/ERC721.json');
 
 /*
 Layer 2 (ContractObjects.js): This component will check if Metamask exists, then instantiate web3 (using the Metamask provider), and then instantiate a contract object for each smart contract with which our app interacts. To instantiate a contract object, we will need the ABI for each smart contract. We will have these in a separate folder. We will pass these objects (along with state from layer 1) down to layer 3.
@@ -16,7 +16,7 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
   const [web3Obj, setWeb3Obj] = React.useState({});
 
   useEffect(() => {
-    if (hasMeta && network === "42" && unlocked) {
+    if (hasMeta && network === '42' && unlocked) {
       console.log(hasMeta, network, unlocked);
       const web3 = new Web3(window.web3.currentProvider);
 
@@ -35,49 +35,52 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
     const NFT = new web3Obj.eth.Contract(NFTABI.abi, NFTAddr);
     let userBal = NFT.methods.balanceOf(maskAddress);
     let getUserBal = await userBal.call();
-    
+    let nftIds = [];
+
     if (getUserBal > 0) {
       for (let i = 0; i < getUserBal; i++) {
         let tokenByIndex = NFT.methods.tokenOfOwnerByIndex(maskAddress, i);
         let getTokenID = await tokenByIndex.call();
+        nftIds.push(getTokenID);
       }
     }
-  }
+    return nftIds;
+  };
 
   const getNFTName = async (NFTAddr) => {
     const NFT = new web3Obj.eth.Contract(NFTABI.abi, NFTAddr);
     let name = NFT.methods.name();
     let data = await name.call();
     return data;
-  }
+  };
 
   const sendOrder = async (contract, tokenIDs, requestAmt, period) => {
     const space = new web3Obj.eth.Contract(pawnSpace.abi);
     space.options.address = contract;
 
     await space.methods.order(tokenIDs, requestAmt, period).send();
-  }
+  };
 
   const sendOffer = async (contract, orderID) => {
     const space = new web3Obj.eth.Contract(pawnSpace.abi);
     space.options.address = contract;
 
     await space.methods.offer(orderID).send();
-  }
+  };
 
   const sendPayback = async (contract, orderID) => {
     const space = new web3Obj.eth.Contract(pawnSpace.abi);
     space.options.address = contract;
 
     await space.methods.payback(orderID).send();
-  }
+  };
 
   const sendWithdraw = async (contract, orderID) => {
     const space = new web3Obj.eth.Contract(pawnSpace.abi);
     space.options.address = contract;
 
     await space.methods.withdraw(orderID).send();
-  }
+  };
 
   if (loaded) {
     return (
@@ -88,6 +91,8 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
         maskAddress={maskAddress}
         enable={enable}
         web3={web3Obj}
+        getUserNFT={getUserNFT}
+        getNFTName={getNFTName}
         sendOrder={sendOrder}
         sendOffer={sendOffer}
         sendPayback={sendPayback}
@@ -95,14 +100,8 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
       />
     );
   } else {
-    return (
-      <div>
-        LOADING PLACEHOLDER
-      </div>
-    )
+    return <div>LOADING PLACEHOLDER</div>;
   }
-
 }
-
 
 export default ContractObjects;
