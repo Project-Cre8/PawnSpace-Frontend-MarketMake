@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import ContractEvents from './ContractEvents.js';
 
 const axios = require('axios');
@@ -17,8 +17,9 @@ function ContractData({ hasMeta, network, mintAToken, unlocked, maskAddress, ena
   // will build this once we are ready to bring in contracts
   useEffect(() => {
     const getData = () => {
-      axios.post('https://api.thegraph.com/subgraphs/name/project-cre8/pawnspace-kovan', {
-        query: `{
+      axios
+        .post('https://api.thegraph.com/subgraphs/name/project-cre8/pawnspace-kovan', {
+          query: `{
           factories(first: 5) {
             id
             spaceCount
@@ -53,45 +54,44 @@ function ContractData({ hasMeta, network, mintAToken, unlocked, maskAddress, ena
               nftAddress
             }
           }
-        }`
-      }
-      ).then((response) => {
-        console.log(response);
-        const factoryInfo = {
-          factoryAddr: response.data.data.factories[0].id,
-          totalSpaces: response.data.data.factories[0].spaceCount
-        }
+        }`,
+        })
+        .then((response) => {
+          console.log(response);
+          const factoryInfo = {
+            factoryAddr: response.data.data.factories[0].id,
+            totalSpaces: response.data.data.factories[0].spaceCount,
+          };
 
-        let spaces = [];
-        // creates template database from unique space addresses
-        // array of spaces
-        for (let i = 0; i < response.data.data.spaces.length; i++) {
-          let spaceTemplate = {
-            name: "",
-            spaceAddr: response.data.data.spaces[i].id,
-            nftAddr: response.data.data.spaces[i].nftAddress,
-            nftName: response.data.data.spaces[i].nftName,
-            nftSymbol: response.data.data.spaces[i].nftSymbol,
-            orders: []
+          let spaces = [];
+          // creates template database from unique space addresses
+          // array of spaces
+          for (let i = 0; i < response.data.data.spaces.length; i++) {
+            let spaceTemplate = {
+              name: '',
+              spaceAddr: response.data.data.spaces[i].id,
+              nftAddr: response.data.data.spaces[i].nftAddress,
+              nftName: response.data.data.spaces[i].nftName,
+              nftSymbol: response.data.data.spaces[i].nftSymbol,
+              orders: [],
+            };
+            spaces.push(spaceTemplate);
           }
-          spaces.push(spaceTemplate)
-        }
 
-        // loop through Orders, and place each one in corresponding space object
-        for (let k = 0; k < response.data.data.orders.length; k++) {
-          let orderSpaceAddr = response.data.data.orders[k].space.id;
-          for (let j = 0; j < spaces.length; j++) {
-            if (spaces[j].spaceAddr.toUpperCase() === orderSpaceAddr.toUpperCase()) {
-              let orderToPush = response.data.data.orders[k];
-              orderToPush.additionalCollateral /= (10 **6);
-              orderToPush.interest /= (10 ** 6);
-              orderToPush.requestAmount /= (10 ** 6);
-              spaces[j].orders.push(response.data.data.orders[k]);
-              break;
+          // loop through Orders, and place each one in corresponding space object
+          for (let k = 0; k < response.data.data.orders.length; k++) {
+            let orderSpaceAddr = response.data.data.orders[k].space.id;
+            for (let j = 0; j < spaces.length; j++) {
+              if (spaces[j].spaceAddr.toUpperCase() === orderSpaceAddr.toUpperCase()) {
+                let orderToPush = response.data.data.orders[k];
+                orderToPush.additionalCollateral /= 10 ** 6;
+                orderToPush.interest /= 10 ** 6;
+                orderToPush.requestAmount /= 10 ** 6;
+                spaces[j].orders.push(response.data.data.orders[k]);
+                break;
+              }
             }
           }
-        }
-
         setFactoryData(factoryInfo);
         setOrderData(spaces);
         setLoaded(true);
@@ -136,9 +136,6 @@ function ContractData({ hasMeta, network, mintAToken, unlocked, maskAddress, ena
       <div>loading</div>
     )
   }
-  
 }
 
-
 export default ContractData;
-

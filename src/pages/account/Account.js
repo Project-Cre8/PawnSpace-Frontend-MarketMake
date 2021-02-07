@@ -1,13 +1,4 @@
-
-
-
-
-
-
-export default () => {
-  return (
-    <div>
-      In account
-    </div>
-  );
-}
+const Account = () => {
+  return <div>In account</div>;
+};
+export default Account;

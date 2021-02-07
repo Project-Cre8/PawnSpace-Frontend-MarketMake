@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 
-import Offers from '../pages/offers/Offers.js'
-import MySider from "./MySider.js";
-import MyHeader from "./MyHeader.js";
+// import Offers from '../pages/offers/Offers.js';
+import MySider from './MySider.js';
+import MyHeader from './MyHeader.js';
 
 const { Content } = Layout;
 
@@ -15,7 +15,6 @@ function MyLayout({ children }) {
       <BrowserRouter>
         <MyHeader />
         <Layout>
-
           {/* sider lives on offers page */}
           <Route path="/offers">
             <MySider />
@@ -31,7 +30,6 @@ function MyLayout({ children }) {
               }}
             >
               {children}
-
             </Content>
           </Layout>
         </Layout>
@@ -39,6 +37,5 @@ function MyLayout({ children }) {
     </Layout>
   );
 }
-
 
 export default MyLayout;

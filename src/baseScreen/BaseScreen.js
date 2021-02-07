@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './BaseScreen.css';
 
 import Account from '../pages/account/Account.js';
-import Index from '../pages/index/Index.js';
+// import Index from '../pages/index/Index.js';
 import OffersPage from '../pages/offers/OffersPage.js';
 import MyLayout from './MyLayout.js';
-import NotFound from '../pages/NotFound.js'
+import NotFound from '../pages/NotFound.js';
 
 /* 
   Layout: https://ant.design/components/layout/ header sider 2
@@ -41,7 +41,6 @@ function BaseScreen({ hasMeta, network, unlocked, tokenIDList, mintAToken, maskA
   return (
     <div>
       <MyLayout>
-
         Content
         <Switch>
           {/* index */}
@@ -85,9 +84,8 @@ function BaseScreen({ hasMeta, network, unlocked, tokenIDList, mintAToken, maskA
 
           <Route component={NotFound} />
         </Switch>
-
       </MyLayout>
-    </div >
+    </div>
   );
 }
 
