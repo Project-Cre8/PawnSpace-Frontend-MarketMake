@@ -12,14 +12,16 @@ function Offers({ data }) {
   let noOffers;
   // map variables to each item in fetched image array and return image component
   if (results && results.length > 0) {
+    let i=0;
     offers = results.map(offer => {
       //const url = `/offers/${offer.name}`;
+      i++;
       const card = <OfferCard
         name={offer.name} image={offer.image}
         duration={offer.duration} amount={offer.amount}
         currency={offer.currency} reward={offer.reward}
         rewardCurrency={offer.rewardCurrency}
-        rate={offer.rate} url={offer.url} />
+        rate={offer.rate} url={offer.url} key={i} />
       return (<li>{card}</li>);
     });
   } else {
