@@ -20,7 +20,7 @@ function BaseScreen({ hasMeta, network, unlocked, tokenIDList, mintAToken, maskA
   const [tokenID, setTokenID] = React.useState("");
   const [askAmt, setAskAmt] = React.useState("");
 
-  useEffect(() => {
+  React.useEffect(() => {
     let IDs = ""
     if (tokenIDList.length > 0) {
       for (let i = 0; i <tokenIDList.length; i++) {
