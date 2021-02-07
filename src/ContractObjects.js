@@ -4,7 +4,7 @@ import ContractData from './ContractData.js';
 const Web3 = require('web3');
 
 const pawnSpace = require("./ABI/PawnSpace.json");
-const pawnFactory = require("./ABI/PawnFactory.json");
+// const pawnFactory = require("./ABI/PawnFactory.json");
 const NFTABI = require("./ABI/ERC721.json");
 const erc20ABI = require("./ABI/ERC20.json");
 const aTokenABI = require("./ABI/ARC20.json");
@@ -13,7 +13,7 @@ const NFTAddress = "0xB57f33633232577F2f2cFE2879eDf89Df0FE3Cf3";
 const USDCAddress = "0xe22da380ee6B445bb8273C81944ADEB6E8450422";
 const aTokenAddr = "0xe12AFeC5aa12Cf614678f9bFeeB98cA9Bb95b5B0";
 const pawnSpaceAddr = "0x6467E8d64417659f8631cbF4A420BA5eF9533442";
-const pawnFactoryAddr = "0xB2Dfc879659F94B4f2110983cB0525374d60512E";
+// const pawnFactoryAddr = "0xB2Dfc879659F94B4f2110983cB0525374d60512E";
 /*
 Layer 2 (ContractObjects.js): This component will check if Metamask exists, then instantiate web3 (using the Metamask provider), and then instantiate a contract object for each smart contract with which our app interacts. To instantiate a contract object, we will need the ABI for each smart contract. We will have these in a separate folder. We will pass these objects (along with state from layer 1) down to layer 3.
 */
@@ -61,14 +61,14 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
     const erc20 = new web3Obj.eth.Contract(erc20ABI.abi, USDCAddress);
     console.log(erc20.methods)
     let minting = erc20.methods.mint(20000000000);
-    let minted = await minting.send({ from: maskAddress});
+    await minting.send({ from: maskAddress});
   }
 
   const mintAToken = async () => {
     const erc20 = new web3Obj.eth.Contract(aTokenABI.abi, aTokenAddr);
     console.log(erc20.methods)
     let minting = erc20.methods.mint(maskAddress, 20000000000, 1);
-    let minted = await minting.send({ from: maskAddress});
+    await minting.send({ from: maskAddress});
   }
 
   const mintNFT = async () => {
@@ -133,7 +133,6 @@ function ContractObjects({ hasMeta, maskAddress, network, unlocked, enable }) {
         sendWithdraw={sendWithdraw}
         mintNFT={mintNFT}
         mintERC20={mintERC20}
-        getUserNFT={getUserNFT}
         tokenIDList={tokenIDList}
         mintAToken={mintAToken}
       />

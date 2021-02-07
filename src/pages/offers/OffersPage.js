@@ -11,7 +11,7 @@ function OffersPage({orders}) {
   // console.log(JSON.stringify(testData));
 
   // currently using first token category for DEMO
-  useEffect(() => {
+  useEffect((orders) => {
     let items = orders[0].orders;
     let itemList = []
     for (let i = 0; i < items.length; i++) {

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './BaseScreen.css';
 
 import Account from '../pages/account/Account.js';
-import Index from '../pages/index/Index.js';
+// import Index from '../pages/index/Index.js';
 import OffersPage from '../pages/offers/OffersPage.js';
 import MyLayout from './MyLayout.js';
 import NotFound from '../pages/NotFound.js';
@@ -20,7 +20,7 @@ function BaseScreen({ hasMeta, network, unlocked, tokenIDList, mintAToken, maskA
   const [tokenID, setTokenID] = React.useState("");
   const [askAmt, setAskAmt] = React.useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     let IDs = ""
     if (tokenIDList.length > 0) {
       for (let i = 0; i <tokenIDList.length; i++) {
