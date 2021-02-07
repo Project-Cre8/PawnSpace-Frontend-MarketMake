@@ -23,3 +23,44 @@
   content: flex;
   justify-content: flex-end;
 }
+
+.mainBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 200%;
+  border: black solid 2px;
+
+}
+
+.mintNFTBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 200%;
+  border: black solid 2px;
+}
+
+.createOrderBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 200%;
+  border: black solid 2px;
+}
+
+.erc20Box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 200%;
+  border: black solid 2px;
+}

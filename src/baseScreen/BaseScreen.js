@@ -15,7 +15,29 @@ import NotFound from '../pages/NotFound.js'
   import { UnorderedListOutlined } from '@ant-design/icons';
 */
 
-function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, factory, orders, usdcBal, aBal, updateBalances }) {
+function BaseScreen({ hasMeta, network, unlocked, tokenIDList, mintAToken, maskAddress, enable, getUserNFT, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, factory, orders, usdcBal, aBal, updateBalances, mintNFT, mintERC20 }) {
+  const [IDList, setIDList] = React.useState("");
+  const [tokenID, setTokenID] = React.useState("");
+  const [askAmt, setAskAmt] = React.useState("");
+
+  useEffect(() => {
+    let IDs = ""
+    if (tokenIDList.length > 0) {
+      for (let i = 0; i <tokenIDList.length; i++) {
+        IDs = IDs + tokenIDList[i] + ", ";
+      }
+    }
+    setIDList(IDs);
+  }, [tokenIDList])
+
+  const changeTokenID = (event) => {
+    setTokenID(event.target.value);
+  }
+
+  const changeAskAmt = (event) => {
+    setAskAmt(event.target.value);
+  }
+  
   return (
     <div>
       <MyLayout>
@@ -24,7 +46,31 @@ function BaseScreen({ hasMeta, network, unlocked, maskAddress, enable, web3, sen
         <Switch>
           {/* index */}
           <Route exact path="/">
-            <Index />
+            {/* <Index /> */}
+            <div className="mainBox">
+              <button onClick={enable}> Enable Metamask</button>
+              <div>{maskAddress}</div>
+            </div>
+            <div className="mintNFTBox">
+              <button onClick={mintNFT}>MINT NFT</button>
+              <button onClick={getUserNFT}>PULL TOKEN ID's</button>
+              <div>{IDList}</div>
+            </div>
+            <div className="erc20Box">
+              <button onClick={mintERC20}>MINT ERC20</button>
+              <button onClick={updateBalances}> UPDATE BALANCES</button>
+              <div>{usdcBal}</div>
+            </div>
+            <div className="erc20Box">
+              <button onClick={mintAToken}>MINT aToken</button>
+              <button onClick={updateBalances}> UPDATE BALANCES</button>
+              <div>{aBal}</div>
+            </div>
+            <div className="createOrderBox">
+              <input onChange={changeTokenID} placeholder="Enter Token ID"></input>
+              <input onChange={changeAskAmt} placeholder="Enter Amount of USDC to request"></input>
+              <button onClick={() => sendOrder(tokenID, askAmt, 2010101)} >Create Order</button>
+            </div>
           </Route>
 
           {/* offers page */}

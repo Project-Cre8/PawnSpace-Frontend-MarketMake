@@ -9,7 +9,8 @@ Layer 3 (contractData.js): This component is going to house the main logic for c
 The logic for calling user NFT data is challenging, because the more NFTs the user owns, the more calls our app needs to make. For this reason, we are going to place the logic for obtaining user NFT data into functions, and passing these down as props so that they can be called from a button click on a visual element. These functions need to stay in this layer, because the data object they will build will be passed into layer 4, which needs to have the ability to easily modify this data.
 */
 
-function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw }) {
+function ContractData({ hasMeta, network, mintAToken, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, mintNFT, getUserNFT,
+  mintERC20, tokenIDList }) {
   const [loaded, setLoaded] = React.useState(false);
   const [factoryData, setFactoryData] = React.useState({});
   const [orderData, setOrderData] = React.useState([]);
@@ -123,6 +124,11 @@ function ContractData({ hasMeta, network, unlocked, maskAddress, enable, web3, s
         sendOffer={sendOffer}
         sendPayback={sendPayback}
         sendWithdraw={sendWithdraw}
+        mintNFT={mintNFT}
+        mintERC20={mintERC20}
+        getUserNFT={getUserNFT}
+        tokenIDList={tokenIDList}
+        mintAToken={mintAToken}
       />
     );
   } else {

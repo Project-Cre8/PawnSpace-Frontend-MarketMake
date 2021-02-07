@@ -2,23 +2,22 @@ import React, { useEffect } from "react";
 import BaseScreen from './baseScreen/BaseScreen.js';
 
 const aUSDCABI = require('./ABI/aUSDC.js');
-const erc20ABI = require("./ABI/erc20.js");
+const erc20ABI = require("./ABI/ERC20.json");
 /*
 Layer 4 (contractEvents.js): This component will house our smart contract event listeners. The events we will be listening to are TBD. We will need to listen for events from pawnSpace contracts, as well as other NFT contracts. When an event is received that results in a change in the users data (i.e. an NFT enters/leaves their inventory), the event fallback function is going to modify the data object that was created in Layer 3. This is so that we can avoid having to re-run the time-consuming process of loading NFT data from the blockchain. If user data has not yet been loaded, incoming events should not do anything.
 */
 const aUSDCAddr = "0xe12AFeC5aa12Cf614678f9bFeeB98cA9Bb95b5B0";
 const USDCAddr = "0xe22da380ee6B445bb8273C81944ADEB6E8450422";
 
-function ContractEvents({ hasMeta, network, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, sendPayback, sendWithdraw, orders, factory }) {
+function ContractEvents({ hasMeta, tokenIDList, network, mintAToken, unlocked, maskAddress, enable, web3, sendOrder, sendOffer, getUserNFT, sendPayback, sendWithdraw, orders, factory, mintNFT, mintERC20 }) {
   const [usdcBal, setUSDCBal] = React.useState(0);
   const [aUsdcBal, setAUsdcBal] = React.useState(0);
-
 
   // will be calling contract event listeners here
   useEffect(() => {
     const getBalances = async () => {
       const aContract = new web3.eth.Contract(aUSDCABI, aUSDCAddr);
-      const usdcContract = new web3.eth.Contract(erc20ABI, USDCAddr);
+      const usdcContract = new web3.eth.Contract(erc20ABI.abi, USDCAddr);
 
       const getABal = aContract.methods.balanceOf(maskAddress); 
       const aBal = await getABal.call();
@@ -40,7 +39,7 @@ function ContractEvents({ hasMeta, network, unlocked, maskAddress, enable, web3,
   const updateBalances = async () => {
     if (typeof web3.eth !== "undefined" && unlocked) {
       const aContract = new web3.eth.Contract(aUSDCABI, aUSDCAddr);
-      const usdcContract = new web3.eth.Contract(erc20ABI, USDCAddr);
+      const usdcContract = new web3.eth.Contract(erc20ABI.abi, USDCAddr);
 
       const getABal = aContract.methods.balanceOf(maskAddress); 
       const aBal = await getABal.call();
@@ -72,6 +71,11 @@ function ContractEvents({ hasMeta, network, unlocked, maskAddress, enable, web3,
       usdcBal={usdcBal}
       aBal={aUsdcBal}
       updateBalances={updateBalances}
+      mintNFT={mintNFT}
+      mintERC20={mintERC20}
+      getUserNFT={getUserNFT}
+      tokenIDList={tokenIDList}
+      mintAToken={mintAToken}
     />
   );
 }
